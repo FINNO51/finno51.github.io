@@ -19,9 +19,10 @@ import SupportIcon from "./icons/IconSupport.vue";
     >
 
     Proyecto de experimentación con
-    <a href="https://vuejs.org/">Vue.js</a>. Realizado en un fin de semana como
-    reto para ver hasta qué punto se podía conseguir una aplicación funcional.
-    Con diseño web responsive y personalización de las partidas.
+    <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a>.
+    Realizado en un fin de semana como reto para ver hasta qué punto se podía
+    conseguir una aplicación funcional. Con diseño web responsive y
+    personalización de las partidas.
   </WelcomeItem>
 
   <WelcomeItem>
@@ -34,7 +35,8 @@ import SupportIcon from "./icons/IconSupport.vue";
       ></template
     >
 
-    Proyecto de informática gráfica con JavaScript haciendo uso de Three.js,
+    Proyecto de informática gráfica con JavaScript haciendo uso de
+    <a href="https://threejs.org/" target="_blank" rel="noopener">Three.js</a>,
     desarrollado en colaboración con
     <a href="https://github.com/Pablo01bm" target="_blank" rel="noopener"
       >Pablo Borrego Megías</a

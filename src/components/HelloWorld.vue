@@ -16,7 +16,7 @@ defineProps({
         href="https://www.linkedin.com/in/jordi-conde-molina/"
         target="_blank"
         rel="noopener"
-        >Linkedin</a
+        >LinkedIn</a
       >
       -
       <a href="https://github.com/FINNO51" target="_blank" rel="noopener"
