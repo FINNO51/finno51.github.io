@@ -69,11 +69,6 @@ export default {
   mounted() {
     this.fetchCurrentLocationWeather();
     this.getTime();
-    let that = this;
-    setInterval(function () {
-      that.fetchCurrentLocationWeather();
-      that.getTime();
-    }, 1000);
   },
   methods: {
     async fetchCurrentLocationWeather() {
