@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <!--<div class="header">
+    <!--
+    <div class="header">
       <div class="search-bar">
         <input
           type="text"
@@ -11,19 +12,20 @@
         <button @click="searchByCity" class="search-button">Search</button>
       </div>
     </div>
-    -->
+-->
     <main class="main-section">
       <Transition :duration="550" name="nested" mode="out-in">
         <div v-if="weatherData" class="weather">
           <div class="inner">
             <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
             <div class="temp-box">
+              <div class="time">{{ currentTime }}</div>
               <img :src="iconUrl" class="weather-icon" />
               <div class="temperature">{{ temperature }} °C</div>
             </div>
           </div>
         </div>
-        <div v-else class="weather" :style="{ height: '100px' }">
+        <div v-else class="weather" :style="{ height: '6rem' }">
           <div class="inner"><h2>Cargando...</h2></div>
         </div>
       </Transition>
@@ -42,8 +44,7 @@ export default {
     return {
       city: "",
       weatherData: null,
-      hourlyForecast: [],
-      dailyForecast: [],
+      d: new Date(),
     };
   },
   computed: {
@@ -53,14 +54,26 @@ export default {
         : null;
     },
     iconUrl() {
-      console.log(this.weatherData.weather[0].icon);
       return this.weatherData
         ? `http://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
         : null;
     },
+    currentTime() {
+      let currentHours = this.d.getHours();
+      currentHours = ("0" + currentHours).slice(-2);
+      let currentMinutes = this.d.getMinutes();
+      currentMinutes = ("0" + currentMinutes).slice(-2);
+      return currentHours + ":" + currentMinutes;
+    },
   },
   mounted() {
     this.fetchCurrentLocationWeather();
+    this.getTime();
+    let that = this;
+    setInterval(function () {
+      that.fetchCurrentLocationWeather();
+      that.getTime();
+    }, 1000);
   },
   methods: {
     async fetchCurrentLocationWeather() {
@@ -86,10 +99,20 @@ export default {
         const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`;
         const response = await axios.get(urlsearch);
         this.weatherData = response.data;
+        this.getTime();
       } catch (error) {
         console.error("Error fetching weather data:", error);
       }
       this.city = "";
+    },
+    async getTime() {
+      if (this.weatherData) {
+        let localTime = this.d.getTime();
+        let localOffset = this.d.getTimezoneOffset() * 60000;
+        let utc = localTime + localOffset;
+        let cityTime = utc + 1000 * this.weatherData.timezone;
+        this.d = new Date(cityTime);
+      }
     },
   },
 };
@@ -97,9 +120,17 @@ export default {
 
 <style scoped>
 .container {
+  display: flex;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  height: 20rem;
+  align-items: center;
+}
+
+.main-section {
+  display: flex;
+  align-items: center;
 }
 
 /* Header */
@@ -155,8 +186,8 @@ export default {
   flex-direction: column;
   text-align: left;
   color: #fff;
-  min-height: 100px;
-  margin-bottom: 3rem;
+  min-height: 6rem;
+  width: 22rem;
   padding: 2rem;
   background-color: var(--color-border);
   border-radius: 1rem;
@@ -188,5 +219,12 @@ export default {
   height: 2rem;
   line-height: 1.5rem;
   padding-left: 1.5rem;
+}
+
+.time {
+  font-size: 2rem;
+  height: 2rem;
+  line-height: 1.5rem;
+  padding-right: 1.5rem;
 }
 </style>

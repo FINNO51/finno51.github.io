@@ -17,19 +17,23 @@ import WeatherWidget from "./components/WeatherWidget.vue";
     <div class="wrapper">
       <HelloWorld msg="Jordi Conde Molina" />
     </div>
-    <WeatherWidget />
   </header>
 
   <main>
     <TheWelcome />
+    <WeatherWidget />
   </main>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
+}
+
+main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .logo {
