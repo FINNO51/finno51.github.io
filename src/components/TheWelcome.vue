@@ -1,10 +1,7 @@
 <script setup>
 import WelcomeItem from "./WelcomeItem.vue";
 import ShipIcon from "./icons/IconShip.vue";
-import ToolingIcon from "./icons/IconTooling.vue";
-import EcosystemIcon from "./icons/IconEcosystem.vue";
 import BombIcon from "./icons/IconBomb.vue";
-import SupportIcon from "./icons/IconSupport.vue";
 </script>
 
 <template>

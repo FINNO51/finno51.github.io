@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+import WeatherWidget from "./components/WeatherWidget.vue";
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import TheWelcome from "./components/TheWelcome.vue";
     <div class="wrapper">
       <HelloWorld msg="Jordi Conde Molina" />
     </div>
+    <WeatherWidget />
   </header>
 
   <main>
@@ -26,6 +28,8 @@ import TheWelcome from "./components/TheWelcome.vue";
 <style scoped>
 header {
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
