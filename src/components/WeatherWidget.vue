@@ -17,9 +17,8 @@
       <Transition :duration="550" name="nested" mode="out-in">
         <div v-if="weatherData" class="weather">
           <div class="inner">
-            <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
             <div class="temp-box">
-              <div class="time">{{ currentTime }}</div>
+              <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
               <img :src="iconUrl" class="weather-icon" />
               <div class="temperature">{{ temperature }} °C</div>
             </div>
@@ -193,6 +192,7 @@ export default {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.4rem;
+  margin-right: 1rem;
   color: var(--color-heading);
 }
 

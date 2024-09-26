@@ -6,22 +6,21 @@ import WeatherWidget from "./components/WeatherWidget.vue";
 
 <template>
   <header>
-    <img
-      alt="Logo"
-      class="logo"
-      src="./assets/logo.png"
-      width="125"
-      height="125"
-    />
-
     <div class="wrapper">
+      <img
+        alt="Logo"
+        class="logo"
+        src="./assets/logo.png"
+        width="125"
+        height="125"
+      />
       <HelloWorld msg="Jordi Conde Molina" />
+      <WeatherWidget />
     </div>
   </header>
 
   <main>
     <TheWelcome />
-    <WeatherWidget />
   </main>
 </template>
 
