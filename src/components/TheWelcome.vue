@@ -57,7 +57,7 @@ function toggleVideo() {
     </WelcomeItem>
     <Transition>
       <div
-        v-show="video"
+        v-show="!video"
         :style="{ 'padding-left': '5em', 'padding-right': '5em' }"
         class="video"
       >
